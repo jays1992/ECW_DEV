@@ -49,7 +49,7 @@
       <div class="row">      
         <div class="col-lg-2 pl"><p>Header*</p></div>
         <div class="col-lg-10 pl">
-          <textarea name="HEADER" id="Headereditor" cols="118" rows="10"></textarea>
+          <textarea name="HEADER" id="Headereditor" cols="118" rows="10">Dear #NAME#,</textarea>
         </div>       
       </div>
 
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-lg-2 pl"><p>Footer*</p></div>
         <div class="col-lg-10 pl">
-          <textarea name="FOOTER" id="footereditor" cols="118" rows="10" ></textarea>
+          <textarea name="FOOTER" id="footereditor" cols="118" rows="10" >Thanks and Regards <br/> The Detailing Mafia</textarea>
         </div>      
       </div>
 
@@ -357,6 +357,7 @@ $(document).ready(function () {
   CKEDITOR.replace('Headereditor');
   CKEDITOR.replace('messagebody');
   CKEDITOR.replace('footereditor');
+  
   CKEDITOR.instances.Headereditor.config.readOnly = true;
   CKEDITOR.instances.messagebody.config.readOnly = true;
   CKEDITOR.instances.footereditor.config.readOnly = true;
@@ -378,8 +379,8 @@ function getSmsType(value) {
     CKEDITOR.instances.footereditor.setReadOnly(true);
   }else{
     CKEDITOR.instances.messagebody.setReadOnly(false);
-    CKEDITOR.instances.Headereditor.setReadOnly(false);  
-    CKEDITOR.instances.footereditor.setReadOnly(false);    
+    CKEDITOR.instances.Headereditor.setReadOnly(true);  
+    CKEDITOR.instances.footereditor.setReadOnly(true);    
   } 
 }
 

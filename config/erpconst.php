@@ -11,6 +11,14 @@ return [
                  "account_type"=>"SAVING ACCOUNT,CURRENT ACCOUNT,OD,OTHERS",
          ],
 		 
-
+         "PHP_MAILER"=>[
+                "Host"=>"smtp.rediffmailpro.com",
+               "Port"=>"587",
+                "username"=>"chandresh@bsquare.in",
+                "Password"=>"Chandresh@321",
+               "from"=>"chandresh@bsquare.in",
+               "Company"=>"Chandresh Tripathi",
+                
+        ],
 
 ];

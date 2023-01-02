@@ -369,8 +369,8 @@ function getSmsType(value) {
     CKEDITOR.instances.footereditor.setReadOnly(true);
   }else{
     CKEDITOR.instances.messagebody.setReadOnly(false);
-    CKEDITOR.instances.Headereditor.setReadOnly(false);  
-    CKEDITOR.instances.footereditor.setReadOnly(false);    
+    CKEDITOR.instances.Headereditor.setReadOnly(true);  
+    CKEDITOR.instances.footereditor.setReadOnly(true);    
   } 
 }
 
@@ -396,8 +396,8 @@ $(document).ready(function () {
     $("#footereditor").prop('disabled',true);
   }else{
     $("#messagebody").prop('disabled',false);
-    $("#Headereditor").prop('disabled',false);
-    $("#footereditor").prop('disabled',false);
+    $("#Headereditor").prop('disabled',true);
+    $("#footereditor").prop('disabled',true);
   } 
 
 });

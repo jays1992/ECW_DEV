@@ -11,6 +11,8 @@ use Auth;
 use DB;
 use Session;
 use Response;
+use PHPMailer\PHPMailer;
+use PHPMailer\Exception;
 
 
 class Controller extends BaseController{
@@ -477,6 +479,36 @@ class Controller extends BaseController{
         );
 
         return $docarray;
+    }
+
+    public function sendmail($email,$name,$subject,$body){
+        $mail                   =   new PHPMailer\PHPMailer();
+        //$mail->SMTPDebug        =   1;
+        $mail->SMTPAuth         =   true;
+        $mail-> isSMTP();
+        $mail->Host             =   Session::get('smtp_config')['host'];
+        $mail->Port             =   Session::get('smtp_config')['port'];
+        $mail->IsHTML(true);
+        $mail->Username         =   Session::get('smtp_config')['username'];
+        $mail->Password         =  Session::get('smtp_config')['password'];
+        $mail->SetFrom(Session::get('smtp_config')['from']);
+        $mail->Subject  =   $subject;
+        $mail->Body     =   $body;
+        $mail->AddAddress($email, $name);
+
+        return $mail->Send();
+    }
+
+    public function sendwhatsapp($mobile,$msg){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,"http://api.textifydigitals.in/wapp/api/send?apikey=68e68f90d14c41ed86f669263b736d09&mobile=$mobile&msg=$msg");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        //curl_setopt($ch, CURLOPT_POSTFIELDS,"postvar1=value1&postvar2=value2&postvar3=value3");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec($ch);
+        curl_close ($ch);
+
+        return $server_output;
     }
 
 }
